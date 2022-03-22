@@ -18,14 +18,10 @@ const sess = {
 };
 
 app.use(session(sess));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/home-routes'));
-
-
-
 
 sequelize.sync({ force: false }).then(() => {
    app.listen(PORT, () => console.log('Now listening'));
@@ -35,3 +31,4 @@ sequelize.sync({ force: false }).then(() => {
  // 2. seeds
  // 3. handlebars
  // 4. utils auth
+ // 5. /public/
