@@ -35,8 +35,8 @@ sequelize.sync({ force: false }).then(() => {
  });
 
  // 1. 
- // 2. 
- // 3. Doesn't display the post title on the homepage 
+ // 2. edit post page allows you to edit title but not content
+ // 3. Doesn't display the post title on the homepage, single-post, or the dashboard
  // 4. Change styles
  // 5. Need to update the Put route for single post.  Getting NaN on the edit-post page
  // 6. The edit post page doesn't allow you to change the title of the post
