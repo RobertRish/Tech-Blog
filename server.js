@@ -34,9 +34,9 @@ sequelize.sync({ force: false }).then(() => {
    app.listen(PORT, () => console.log('Now listening'));
  });
 
- // 1. Clicking on the post title doesn't open the post-info page
- // 2. Clicking the submit button on the dashboard doesn't submit the post.  The route works though
- // 3. Doesn't display the post content when you click the comment button
+ // 1. 
+ // 2. 
+ // 3. Doesn't display the post title on the homepage 
  // 4. Change styles
  // 5. Need to update the Put route for single post.  Getting NaN on the edit-post page
  // 6. The edit post page doesn't allow you to change the title of the post
