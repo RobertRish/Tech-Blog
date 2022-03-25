@@ -2,18 +2,19 @@ const { Router } = require('express');
 const { User, Post, Comment } = require('../models');
 const router = require('express').Router();
 
-// Gets all posts for homepage
+// Gets all posts for homepage tested and passed!
 router.get('/', (req, res) => {
     Post.findAll({
       attributes: [
         'id',
         'title',
-        'text'
+        'text',
+        'created_at'
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -27,7 +28,7 @@ router.get('/', (req, res) => {
     })
       .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-  
+        // res.json(posts)
         res.render('homepage', {
           posts,
           loggedIn: req.session.loggedIn
@@ -48,12 +49,13 @@ router.get('/post/:id', (req, res) => {
     attributes: [
       'id',
       'title',
-      'text'
+      'text',
+      'created_at'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
