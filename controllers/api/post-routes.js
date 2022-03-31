@@ -86,28 +86,40 @@ router.post('/', withAuth, (req, res) => {
 });
 
 
-router.put('/:id', withAuth, (req, res) => {
-    Post.update(
-        {
-            title: req.body.title
-        },
-        {
-            where: {
-                id: req.params.id
-            }
+router.put('/:id', withAuth, async(req, res) => {
+    try {
+        const [rows] = await Post.update(req.body, {where: {id: req.params.id}});
+        if (rows > 0) {
+            res.status(200).end();
+        } else {
+            res.status(404).end();
         }
-    )
-        .then(dbPostData => {
-            if (!dbPostData) {
-                res.status(404).json({ message: 'No post found wuth this id' });
-                return;
-            }
-            res.json(dbPostData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    } catch (error) {
+        res.status(500).json(error)
+    }
+
+    // Post.update(
+    //     {
+    //         title: req.body.title,
+    //         text: req.body.text
+    //     },
+    //     {
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     }
+    // )
+    //     .then(dbPostData => {
+    //         if (!dbPostData) {
+    //             res.status(404).json({ message: 'No post found with this id' });
+    //             return;
+    //         }
+    //         res.json(dbPostData);
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //         res.status(500).json(err);
+    //     });
 });
 
 router.delete('/:id', withAuth, (req, res) => {

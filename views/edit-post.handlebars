@@ -9,7 +9,7 @@
       <span>({{format_url post.text}})</span>
     </div>
     <div>
-      {{post.text}} {{format_plural "point" post.text}} by you on {{format_date created_at}}
+      {{post.text}} {{format_plural "point" post.text}} by you on {{format_date post.created_at}}
       |
       <a href="/post/{{post.id}}">{{post.text.length}} {{format_plural "comment" comments.length}}</a>
     </div>
@@ -28,7 +28,7 @@
   </div>
 </form>
 
-{{> comments post.comments}}
+{{> comments post.text}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
