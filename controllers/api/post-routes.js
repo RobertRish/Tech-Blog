@@ -97,29 +97,6 @@ router.put('/:id', withAuth, async(req, res) => {
     } catch (error) {
         res.status(500).json(error)
     }
-
-    // Post.update(
-    //     {
-    //         title: req.body.title,
-    //         text: req.body.text
-    //     },
-    //     {
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     }
-    // )
-    //     .then(dbPostData => {
-    //         if (!dbPostData) {
-    //             res.status(404).json({ message: 'No post found with this id' });
-    //             return;
-    //         }
-    //         res.json(dbPostData);
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         res.status(500).json(err);
-    //     });
 });
 
 router.delete('/:id', withAuth, (req, res) => {
