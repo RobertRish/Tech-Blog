@@ -34,10 +34,4 @@ sequelize.sync({ force: false }).then(() => {
    app.listen(PORT, () => console.log('Now listening'));
  });
 
- // 1. 
- // 2. edit post page allows you to edit title but not content
- // 3. Doesn't display the post title on the homepage, single-post, or the dashboard
- // 4. maybe just tell em to download and not use heroku
- // 5. Need to update the Put route for single post.  Getting NaN on the edit-post page
- // 6. The edit post page doesn't allow you to change the title of the post
- // 7. The edit post page 
+ // remote repo is now called okapi-senator
